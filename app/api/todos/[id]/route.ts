@@ -5,8 +5,17 @@ const DATA_SOURCE_URL = 'https://jsonplaceholder.typicode.com/todos'
 
 /* const API_KEY: string = process.env.DATA_API_KEY as string */
 
-export async function GET(request: Request) {
-    const id = request.url.slice(request.url.lastIndexOf('/') + 1 )
+type Props = {
+    params: {
+        id: string
+    }
+}
+
+
+export async function GET(request: Request, {params: { id }}: Props) {
+    /* const id = request.url.slice(request.url.lastIndexOf('/') + 1 ) */
+
+    console.log('Her is REQ:', request.url)
 
     const res = await fetch(`${DATA_SOURCE_URL}/${id}`)
 
